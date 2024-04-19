@@ -35,6 +35,16 @@ module.exports.add_recipe_csv = (req, res) => {
 };
 
 
+module.exports.list_ingredients = async (req, res) => {
+    try {
+        const ingredients = await Ingredient.find({});
+        res.status(200).json(ingredients);
+    } catch (err) {
+        res.status(500).json({ error: 'Error fetching ingredients' });
+    }
+};
+
+
 module.exports.add_ingredient = async (req, res) => {
     const { name, description } = req.body;
     try {
