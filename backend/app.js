@@ -1,12 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const authRoutes = require('./routes/authRoutes');
-
-const dishRoutes = require('./routes/dishRoutes');
-const dealRoutes = require('./routes/dealRoutes');
 const cookieParser = require('cookie-parser');
+const authRoutes = require('./routes/authRoutes');
+const recipeRoutes = require('./routes/recipeRoutes'); 
 const { checkUser } = require('./middleware/middleware');
+
+
 
 const app = express();
 
@@ -35,5 +35,4 @@ app.get('*', checkUser);
 
 // Mount routes
 app.use(authRoutes);
-app.use('/dishes', dishRoutes);
-app.use('/deals', dealRoutes);
+app.use(recipeRoutes); 
